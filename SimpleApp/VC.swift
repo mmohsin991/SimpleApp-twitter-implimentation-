@@ -29,6 +29,9 @@ class VC: UIViewController {
         
         
         
+        
+        
+        
         let logInButton = TWTRLogInButton(logInCompletion: {
             (session: TWTRSession!, error: NSError!) in
             // play with Twitter session
@@ -57,6 +60,23 @@ class VC: UIViewController {
     }
     
     
+    
+    
+    func twitterLogin(){
+        Twitter.sharedInstance().logInWithCompletion { session, error in
+            if (session != nil) {
+                println("signed in as \(session.userName)");
+            } else {
+                println("error: \(error.localizedDescription)");
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
     @IBAction func share(sender: UIButton) {
     
         // Swift
@@ -77,6 +97,13 @@ class VC: UIViewController {
     }
     
     
+    
+    @IBAction func customLogin(sender: UIButton) {
+        self.twitterLogin()
+    }
+    
+    
+
     
 }
 
